@@ -1,0 +1,13 @@
+<h1><%= @author.name %></h1>
+<hr>
+
+<h3>Books:</h3>
+<% @author.books.each do |book| %>
+    <li><%= book.title %></li>
+    <% book.reviews.each do |review| %>
+        <li><%= review.name %> - <%= review.content %> <li>
+        <button><%=link_to "Add a review", new_author_book_review_path(@author, book)%></button>
+    <% end %>
+<% end %>
+<% binding.pry %>
+<button><%= link_to "Add Book", new_author_book_path(@author) %></button>

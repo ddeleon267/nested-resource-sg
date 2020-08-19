@@ -1,0 +1,20 @@
+<h1>Add an Author and A book and a Review</h1>
+
+<%= form_for @author do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <br>
+    <%= f.fields_for :books, @book do |bf|%>
+        <%= bf.label "Book Title" %>
+        <%= bf.text_field :title %>
+        <br>
+        <%= bf.fields_for :reviews, @book.reviews.build do |rf|%>
+            <%= rf.label "Reviewer Name" %>
+            <%= rf.text_field :name %>
+            <br>
+            <%= rf.label "Review" %>
+            <%= rf.text_field :content%>
+        <% end %>
+    <% end %>
+    <%= f.submit "Submit" %>
+<% end %>
